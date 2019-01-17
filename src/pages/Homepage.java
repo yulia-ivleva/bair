@@ -20,7 +20,7 @@ public class Homepage extends HeaderFooter<Homepage> {
 
     @Override
     protected void get() {
-        driver.get(baseUrl);
+        driver.get(baseUrl + "home");
     }
 
     @Override

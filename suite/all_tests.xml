@@ -5,6 +5,7 @@
             <class name="tests.HomepageTest"/>
             <class name="tests.NavigationTests"/>
             <class name="tests.SearchSuggestionFlyoutTests"/>
+            <class name="tests.RegistrationTest"/>
         </classes>
     </test>
 </suite>

@@ -30,6 +30,9 @@ public abstract class HeaderFooter<T extends HeaderFooter> extends BasePage<T> {
     @FindBy(css = "#search-suggestions")
     private WebElement searchSuggestionsBlock;
 
+    @FindBy(css = ".utility-menu__link--account ")
+    private WebElement myAccountIcon;
+
     protected HeaderFooter(WebDriver driver) {
         super(driver);
     }
@@ -109,5 +112,11 @@ public abstract class HeaderFooter<T extends HeaderFooter> extends BasePage<T> {
         suggestedResults.stream().filter(webElement -> webElement.getText().equals(name)).findFirst()
                 .orElseThrow(() -> new AssertionError("No suggestion with name: " + name)).click();
         return new ProductDetailsPage(driver, true);
+    }
+
+    public LoginPage clickMyAccountIcon() {
+        System.out.println("Clicking 'My account' icon");
+        myAccountIcon.click();
+        return new LoginPage(driver, true);
     }
 }

@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.ConfigurationUtil;
@@ -37,4 +38,9 @@ public abstract class BasePage<T extends BasePage> {
     protected abstract void get();
 
     protected abstract void waitForLoad();
+
+    void clearAndSendKeys(WebElement element, String text) {
+        element.clear();
+        element.sendKeys(text);
+    }
 }

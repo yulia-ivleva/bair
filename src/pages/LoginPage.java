@@ -20,7 +20,7 @@ public class LoginPage extends HeaderFooter<LoginPage> {
 
     @Override
     protected void get() {
-        driver.get(baseUrl);
+        driver.get(baseUrl + "client/login");
     }
 
     @Override
