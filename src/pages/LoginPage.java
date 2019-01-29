@@ -1,5 +1,6 @@
 package pages;
 
+import htmlelements.LoginElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPage extends HeaderFooter<LoginPage> {
     @FindBy(css = ".gigya-layout-cell.responsive.under-site-login span")
     private WebElement registerLink;
+
+    private LoginElement loginElement;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -33,5 +36,20 @@ public class LoginPage extends HeaderFooter<LoginPage> {
         System.out.println("Clicking Register link");
         registerLink.click();
         return new RegisterPage(driver, true);
+    }
+
+    public LoginPage enterEmail(String email) {
+        loginElement.enterEmail(email);
+        return this;
+    }
+
+    public LoginPage enterPassword(String password) {
+        loginElement.enterPassword(password);
+        return this;
+    }
+
+    public LandingPage clickSignInButton() {
+        loginElement.clickSignInButton();
+        return new LandingPage(driver, true);
     }
 }

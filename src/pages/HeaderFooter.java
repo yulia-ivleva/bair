@@ -33,6 +33,9 @@ public abstract class HeaderFooter<T extends HeaderFooter> extends BasePage<T> {
     @FindBy(css = ".utility-menu__link--account ")
     private WebElement myAccountIcon;
 
+    @FindBy(css = ".page-search__button")
+    private WebElement searchSubmitButton;
+
     protected HeaderFooter(WebDriver driver) {
         super(driver);
     }
@@ -92,6 +95,12 @@ public abstract class HeaderFooter<T extends HeaderFooter> extends BasePage<T> {
         for (Character x : chars) {
             element.sendKeys(x.toString());
         }
+    }
+
+    public SearchResultsPage clickSearchSubmitButton() {
+        System.out.println("Clicking the Search submit button");
+        searchSubmitButton.click();
+        return new SearchResultsPage(driver, true);
     }
 
     public String getSuggestedResultsTitle() {

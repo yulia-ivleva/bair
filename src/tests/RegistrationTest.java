@@ -30,7 +30,7 @@ public class RegistrationTest extends BaseTest {
                 .enterEmail(email)
                 .enterPassword(password)
                 .enterConfirmationPassword(password)
-                .checkAgeCheckbox()
+                .selectAgeCheckbox()
                 .clickCreateAccountButton();
         assertThat("User is not registered", landingPage.getUserTitle(), is(firstName + " " + lastName));
     }

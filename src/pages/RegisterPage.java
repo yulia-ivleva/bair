@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.htmlelements.element.CheckBox;
 
 public class RegisterPage extends HeaderFooter<RegisterPage> {
     @FindBy(css = "input[name='profile.firstName'][data-screenset-roles=instance]")
@@ -23,7 +24,7 @@ public class RegisterPage extends HeaderFooter<RegisterPage> {
     private WebElement confirmPasswordField;
 
     @FindBy(css = ".pt_account .gigya-age-consent")
-    private WebElement ageCheckbox;
+    private CheckBox ageCheckbox;
 
     @FindBy(css = ".gigya-input-submit[data-screenset-roles=instance]")
     private WebElement createAccountButton;
@@ -76,9 +77,9 @@ public class RegisterPage extends HeaderFooter<RegisterPage> {
         return this;
     }
 
-    public RegisterPage checkAgeCheckbox() {
-        System.out.println("Checking 'Age' checkbox");
-        ageCheckbox.click();
+    public RegisterPage selectAgeCheckbox() {
+        System.out.println("Selecting 'Age' checkbox");
+        ageCheckbox.select();
         return this;
     }
 
@@ -86,12 +87,6 @@ public class RegisterPage extends HeaderFooter<RegisterPage> {
         System.out.println("Clicking 'Create account' button");
         createAccountButton.click();
         return new LandingPage(driver, true);
-    }
-
-    public RegisterPage clickCreateAccountButtonUnsuccessfully() {
-        System.out.println("Clicking 'Create Account' button");
-        createAccountButton.click();
-        return this;
     }
 
     public String getAlreadyExistingEmailError() {

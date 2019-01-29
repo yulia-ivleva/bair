@@ -6,6 +6,8 @@
             <class name="tests.NavigationTests"/>
             <class name="tests.SearchSuggestionFlyoutTests"/>
             <class name="tests.RegistrationTest"/>
+            <class name="tests.SearchResultsTests"/>
+            <class name="tests.AddressBookTests"/>
         </classes>
     </test>
 </suite>
