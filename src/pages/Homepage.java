@@ -3,8 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Homepage extends HeaderFooter<Homepage> {
     @FindBy(css = ".module__box.ajusttop > .module__title.banner__title-top")
@@ -24,9 +22,8 @@ public class Homepage extends HeaderFooter<Homepage> {
     }
 
     @Override
-    protected void waitForLoad() {
-        new WebDriverWait(driver, TEN_SECONDS).withMessage("Waiting for homepage load")
-                .until(ExpectedConditions.visibilityOf(topBannerTitle));
+    protected WebElement getUniqueElement() {
+        return topBannerTitle;
     }
 
     public String getTopBannerTitle() {

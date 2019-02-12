@@ -3,8 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SearchResultsPage extends HeaderFooter<SearchResultsPage> {
     @FindBy(css = ".search-results__title")
@@ -24,9 +22,8 @@ public class SearchResultsPage extends HeaderFooter<SearchResultsPage> {
     }
 
     @Override
-    protected void waitForLoad() {
-        new WebDriverWait(driver, TEN_SECONDS).withMessage("Waiting for Search results load")
-                .until(ExpectedConditions.visibilityOf(searchResultsTile));
+    protected WebElement getUniqueElement() {
+        return searchResultsTile;
     }
 
     public String getSearchResultsTitle() {

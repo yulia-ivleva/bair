@@ -38,13 +38,12 @@ public class RegisterPage extends HeaderFooter<RegisterPage> {
 
     @Override
     protected void get() {
-        throw new UnsupportedOperationException("No direct url to Register page");
+        throw new UnsupportedOperationException("No direct url to ".getClass().getSimpleName());
     }
 
     @Override
-    protected void waitForLoad() {
-        new WebDriverWait(driver, TEN_SECONDS).withMessage("Waiting for Register page load")
-                .until(ExpectedConditions.visibilityOf(firstNameField));
+    protected WebElement getUniqueElement() {
+        return firstNameField;
     }
 
     public RegisterPage enterFirstName(String firstName) {

@@ -36,6 +36,15 @@ public abstract class HeaderFooter<T extends HeaderFooter> extends BasePage<T> {
     @FindBy(css = ".page-search__button")
     private WebElement searchSubmitButton;
 
+    @FindBy(css = ".mini-cart__total")
+    private WebElement cartIcon;
+
+    @FindBy(css = ".button-tertiary.minicart-checkout")
+    private WebElement checkoutButtonOnMiniCart;
+
+    @FindBy(css = ".mini-cart__product-name")
+    private WebElement productNameOnMiniCart;
+
     protected HeaderFooter(WebDriver driver) {
         super(driver);
     }
@@ -127,5 +136,23 @@ public abstract class HeaderFooter<T extends HeaderFooter> extends BasePage<T> {
         System.out.println("Clicking 'My account' icon");
         myAccountIcon.click();
         return new LoginPage(driver, true);
+    }
+
+    @SuppressWarnings("unchecked")
+    public T clickCartIcon() {
+        System.out.println("Clicking the Cart icon");
+        cartIcon.click();
+        return (T) this;
+    }
+
+    public ShoppingCartPage clickCheckoutButtonOnMiniCart() {
+        System.out.println("Clicking Checkout button on mini-cart");
+        checkoutButtonOnMiniCart.click();
+        return new ShoppingCartPage(driver, true);
+    }
+
+    public String getProductNameOnMiniCart() {
+        return new WebDriverWait(driver, FIVE_SECONDS).until(ExpectedConditions.visibilityOf(productNameOnMiniCart))
+                .getText();
     }
 }

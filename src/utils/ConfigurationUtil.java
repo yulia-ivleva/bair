@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigurationUtil {
-    public static String getBaseUrl() {
-        Properties property = getProperties();
-        return property.getProperty("base_url");
-    }
+    private static final Properties PROPERTY = getProperties();
 
     private static Properties getProperties() {
         Properties property = new Properties();
@@ -20,13 +17,19 @@ public class ConfigurationUtil {
         return property;
     }
 
+    public static String getBaseUrl() {
+        return PROPERTY.getProperty("base_url");
+    }
+
     public static String getUserEmail() {
-        Properties property = getProperties();
-        return property.getProperty("user_email");
+        return PROPERTY.getProperty("user_email");
     }
 
     public static String getUserPassword() {
-        Properties property = getProperties();
-        return property.getProperty("user_password");
+        return PROPERTY.getProperty("user_password");
+    }
+
+    public static String getPdpUrl() {
+        return PROPERTY.getProperty("pdp_url");
     }
 }

@@ -24,9 +24,8 @@ public class LandingPage extends BasePage<LandingPage> {
     }
 
     @Override
-    protected void waitForLoad() {
-        new WebDriverWait(driver, TEN_SECONDS).withMessage("Waiting for My account landing page load")
-                .until(ExpectedConditions.visibilityOf(userTitle));
+    protected WebElement getUniqueElement() {
+        return userTitle;
     }
 
     public String getUserTitle() {

@@ -3,8 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddressBookPage extends HeaderFooter<AddressBookPage> {
     @FindBy(css = ".button-icon-plus")
@@ -27,9 +25,8 @@ public class AddressBookPage extends HeaderFooter<AddressBookPage> {
     }
 
     @Override
-    protected void waitForLoad() {
-        new WebDriverWait(driver, TEN_SECONDS).withMessage("Waiting for Address book page load")
-                .until(ExpectedConditions.visibilityOf(addNewAddressButton));
+    protected WebElement getUniqueElement() {
+        return addNewAddressButton;
     }
 
     public NewAddressPage clickAddNewAddressButton() {

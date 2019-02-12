@@ -1,9 +1,11 @@
 package pages;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementLocatorFactory;
@@ -39,10 +41,23 @@ public abstract class BasePage<T extends BasePage> {
 
     protected abstract void get();
 
-    protected abstract void waitForLoad();
+    protected abstract WebElement getUniqueElement();
+
+    private void waitForLoad() {
+        new WebDriverWait(driver, TEN_SECONDS).withMessage("Waiting for " + getClass().getSimpleName() + " load")
+                .until(ExpectedConditions.visibilityOf(getUniqueElement()));
+    }
 
     void clearAndSendKeys(WebElement element, String text) {
         element.clear();
         element.sendKeys(text);
+    }
+
+    boolean isElementDisplayed(WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }

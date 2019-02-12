@@ -16,15 +16,15 @@ public abstract class BaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void closeBrowser() {
         driver.quit();
     }
 
     protected void sleep(long seconds) {
+        System.out.println("Sleeping " + seconds + " seconds");
         try {
             Thread.sleep(seconds * 1000L);
         } catch (InterruptedException ignored) {

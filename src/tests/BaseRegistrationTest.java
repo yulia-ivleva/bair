@@ -4,7 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeClass;
 import pages.LoginPage;
 
-public class BaseRegistrationTest extends BaseTest {
+public abstract class BaseRegistrationTest extends BaseTest {
 
     @BeforeClass
     public void userRegistration() {
