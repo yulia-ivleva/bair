@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.element.CheckBox;
 import utils.ConfigurationUtil;
@@ -19,6 +20,15 @@ public class ProductDetailsPage extends HeaderFooter<ProductDetailsPage> {
 
     @FindBy(css = ".js-subscription-datefrom")
     private WebElement firstFilterShippingDateField;
+
+    @FindBy(css = ".specification__technical--roomsize ~ div[class~=tooltip]")
+    private WebElement roomSizeTooltip;
+
+    @FindBy(css = ".specification__technical--roomsize ~ div[class~=tooltip] > div")
+    private WebElement roomSizeTooltipContent;
+
+    @FindBy(css = ".video__title")
+    private WebElement videoTitle;
 
     public ProductDetailsPage(WebDriver driver) {
         super(driver);
@@ -58,5 +68,11 @@ public class ProductDetailsPage extends HeaderFooter<ProductDetailsPage> {
         System.out.println("Selecting the first filter shipping Date");
         firstFilterShippingDateField.sendKeys(Keys.ENTER);
         return this;
+    }
+
+    public String getRoomSizeTooltipContent() {
+        scrollIntoView(videoTitle);
+        new Actions(driver).moveToElement(roomSizeTooltip).perform();
+        return roomSizeTooltipContent.getText();
     }
 }

@@ -3,6 +3,7 @@ package tests;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.OrderConfirmationPage;
 import pages.ProductDetailsPage;
@@ -22,6 +23,14 @@ public class GuestCheckoutTests extends BaseTest {
     private static String firstName;
     private static String lastName;
 
+    @DataProvider
+    public static Object[][] creditCardData() {
+        return new Object[][]{
+                {"4111111111111111", "102020", "737"},
+                {"4111111111111111", "102020", "737"},
+        };
+    }
+
     @BeforeClass
     public void fieldsInitialization() {
         firstName = RandomStringUtils.randomAlphabetic(5);
@@ -33,12 +42,9 @@ public class GuestCheckoutTests extends BaseTest {
         productDetailsPage = new ProductDetailsPage(driver).navigateTo();
     }
 
-    @Test
-    public void orderIsPlacedWithNo3DVisa() {
+    @Test(dataProvider = "creditCardData")
+    public void orderIsPlacedWithNo3DVisa(String cardNumber, String expirationDate, String ccv) {
         String nameOnCard = RandomStringUtils.randomAlphabetic(5);
-        String cardNumber = "4111111111111111";
-        String expirationDate = "102020";
-        String ccv = "737";
         String email = String.format("test00+%s@test.com", RandomStringUtils.randomAlphabetic(3));
         productDetailsPage.clickAddToCartButton();
         OrderConfirmationPage orderConfirmationPage = new ShoppingCartPage(driver).navigateTo()

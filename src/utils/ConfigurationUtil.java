@@ -18,18 +18,18 @@ public class ConfigurationUtil {
     }
 
     public static String getBaseUrl() {
-        return PROPERTY.getProperty("base_url");
+        return System.getProperty("base_url", PROPERTY.getProperty("base_url"));
     }
 
     public static String getUserEmail() {
-        return PROPERTY.getProperty("user_email");
+        return System.getProperty("user_email", PROPERTY.getProperty("user_email"));
     }
 
     public static String getUserPassword() {
-        return PROPERTY.getProperty("user_password");
+        return System.getProperty("user_password", PROPERTY.getProperty("user_password"));
     }
 
     public static String getPdpUrl() {
-        return PROPERTY.getProperty("pdp_url");
+        return System.getProperty("pdp_url", PROPERTY.getProperty("pdp_url"));
     }
 }

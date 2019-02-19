@@ -11,6 +11,8 @@
             <class name="tests.ShoppingCartTests"/>
             <class name="tests.GuestCheckoutTests"/>
             <class name="tests.CheckoutLoginTests"/>
+            <class name="tests.ProductDetailsTests"/>
+            <class name="tests.ProductListingTests"/>
         </classes>
     </test>
 </suite>

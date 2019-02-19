@@ -60,4 +60,8 @@ public abstract class BasePage<T extends BasePage> {
             return false;
         }
     }
+
+    void scrollIntoView(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 }

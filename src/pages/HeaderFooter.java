@@ -30,7 +30,7 @@ public abstract class HeaderFooter<T extends HeaderFooter> extends BasePage<T> {
     @FindBy(css = "#search-suggestions")
     private WebElement searchSuggestionsBlock;
 
-    @FindBy(css = ".utility-menu__link--account ")
+    @FindBy(css = ".utility-menu__link--account")
     private WebElement myAccountIcon;
 
     @FindBy(css = ".page-search__button")
